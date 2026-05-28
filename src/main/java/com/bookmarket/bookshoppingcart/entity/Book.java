@@ -1,14 +1,13 @@
 package com.bookmarket.bookshoppingcart.entity;
 
+import com.bookmarket.bookshoppingcart.gateway.http.json.BookResponse;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "books", indexes = {
-        @Index(name = "idx_books_genre", columnList = "genre"),
-})
+@Table(name = "books", indexes = {@Index(name = "idx_books_genre", columnList = "genre"),})
 @Getter
 @Setter
 @NoArgsConstructor
@@ -34,5 +33,9 @@ public class Book {
 
     @Column(nullable = false, length = 50)
     private String genre;
+
+    public BookResponse toJson() {
+        return new BookResponse(this.id, this.title, this.author, this.price, this.stock, this.genre);
+    }
 }
 
