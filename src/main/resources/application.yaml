@@ -12,12 +12,12 @@ spring:
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
     hibernate:
-      ddl-auto: create-drop # Alterado para recriar a base de dados a cada início
-    defer-datasource-initialization: true # Adicionado para garantir que o schema seja criado antes do data.sql
+      ddl-auto: create-drop
+    defer-datasource-initialization: true
 
   sql:
     init:
-      mode: always # Ativa a execução de data.sql e schema.sql
+      mode: always
 
   h2:
     console:
